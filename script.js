@@ -3,26 +3,29 @@ const guests = document.querySelector("#guests");
 const quality = document.querySelector("#quality");
 const tipAmount = document.querySelector("#tip-amount");
 
+/*Rēķina dzeramnaudas summu*/
 calculate = () => {
   const tip = ((amount.value * quality.value) / (guests.value)).toFixed(2);
   amount.value = "";
   guests.value = "";
   quality.value = "";
+
+  /*Pārbauda vai vērtība nav 0 un izvada summu cik jāmaksā*/ 
   if(tip === "NaN"){
-    tipAmount.textContent = "Tip $0 each";
+    tipAmount.textContent = "Nav jāmaksā";
     showTipAmount();
   }
   else{
-    tipAmount.textContent = "Tip $" + tip + " each";
+    tipAmount.textContent = "Jāmaksā $" + tip + " katram";
     showTipAmount();
   }
 }
 
 showTipAmount = () => {
-  // Get the snackbar DIV
+
   var x = document.querySelector("#tip-amount");
-  // Add the "show" class to DIV
+  // Pievieno klasi iekš DIV
   x.className = "show";
-  // After 3 seconds, remove the show class from DIV
-  setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+  // Pēc 7 sekundēm pazūd
+  setTimeout(function(){ x.className = x.className.replace("show", ""); }, 7000);
 }
